@@ -4,7 +4,7 @@ namespace HexletPsrLinter;
 /**
  * Test User class
  */
-class App
+class Linter
 {
     private $source;
 
@@ -13,7 +13,7 @@ class App
         $this->source = $source;
     }
 
-    public function validate()
+    public function lint()
     {
         return true;
     }
