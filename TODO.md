@@ -3,8 +3,9 @@
 2. Работающая проверка на правильность именования функций с вариантом вызова линтера только для одного файла.
     - Создать тест для функции `lint`, проверяющий базовый случай
     ```php
-    $linter = new App();
-    assertTrue($linter->lint($source));
+    $code = '<?php echo "Hello, world"';
+    $linter = new Linter($code);
+    $this->assertTrue($linter->lint($code));
     ```
     - Создать функцию `list` возвращающую true
         - *в процессе*
