@@ -13,6 +13,6 @@ class LinterTest extends \PHPUnit_Framework_TestCase
     {
         $code = '<?php echo "Hello, world"';
         $linter = new Linter($code);
-        $this->assertTrue(true, $linter->lint($code));
+        $this->assertTrue($linter->lint($code));
     }
 }
