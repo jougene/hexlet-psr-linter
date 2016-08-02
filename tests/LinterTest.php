@@ -12,7 +12,7 @@ class LinterTest extends TestCase
 {
     public function testLint()
     {
-        $code = '<?php echo "Hello, world"';
+        $code = file_get_contents('testfile.php');
         $linter = new Linter($code);
         $this->assertTrue($linter->lint($code));
     }
@@ -23,5 +23,7 @@ class LinterTest extends TestCase
         $string1 = 'my_function_name';
         $this->assertTrue(Linter::isCamelCase($string));
         $this->assertFalse(Linter::isCamelCase($string1));
+        $this->assertTrue(Linter::isCamelCase($string1));
     }
 }
+// E:\my\hexlet-psr-linter\testfile.php

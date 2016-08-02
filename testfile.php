@@ -2,10 +2,20 @@
 
 echo "Hello, world!";
 
-function myFunction() {
+$var  = 789;
+
+$array = [
+    'name'  => 'John Smith',
+    'age'   => 29,
+];
+
+
+function myFunction()
+{
     return true;
 }
 
-function incorrect_name() {
+function incorrect_name()
+{
     return false;
 }
