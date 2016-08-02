@@ -12,11 +12,12 @@ class Linter
     public function lint(string $code) : bool
     {
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+        var_dump($parser);
 
         return true;
     }
 
-    public static function isCamelCase(string $string)
+    public static function isCamelCase(string $string) : bool
     {
         return \PHP_CodeSniffer::isCamelCaps($string);
     }
