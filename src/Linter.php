@@ -16,7 +16,7 @@ class Linter
         return true;
     }
 
-    public static function isCamelCase($string)
+    public static function isCamelCase(string $string)
     {
         return true;
     }
