@@ -8,6 +8,9 @@
     $this->assertTrue($linter->lint($code));
     ```
     - Создать функцию `list` возвращающую true
+    - Тест для функции `isCamelCase`
+    - Функцию `isCamelCase`
+    - *в процессе*
     - *в процессе*
     - *в процессе*
     - *в процессе*
