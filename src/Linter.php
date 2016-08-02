@@ -18,6 +18,6 @@ class Linter
 
     public static function isCamelCase(string $string)
     {
-        return true;
+        return \PHP_CodeSniffer::isCamelCaps($string);
     }
 }

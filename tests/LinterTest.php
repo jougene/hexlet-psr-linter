@@ -20,6 +20,8 @@ class LinterTest extends TestCase
     public function testIsCamelCase()
     {
         $string = 'myFunctionName';
+        $string1 = 'my_function_name';
         $this->assertTrue(Linter::isCamelCase($string));
+        $this->assertFalse(Linter::isCamelCase($string1));
     }
 }
