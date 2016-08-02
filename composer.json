@@ -1,11 +1,12 @@
 {
   "name": "jougene/hexlet-psr-linter",
-  "bin": ["bin/hexlet-psr-linter"],
+  "bin": ["bin/psrlint"],
   "type": "library",
   "require-dev": {
     "phpunit/phpunit": "^5.2",
     "squizlabs/php_codesniffer": "2.*",
-    "codeclimate/php-test-reporter": "dev-master"
+    "codeclimate/php-test-reporter": "dev-master",
+    "nikic/php-parser": "^2.1"
   },
   "authors": [
     {
@@ -18,7 +19,5 @@
       "HexletPsrLinter\\": "src/"
     }
   },
-  "require": {
-    "nikic/php-parser": "^2.1"
-  }
+  "require": {}
 }

@@ -1,19 +1,22 @@
 <?php
 namespace HexletPsrLinter;
 
+use PhpParser\Error;
+use PhpParser\ParserFactory;
+
 /**
  * Test User class
  */
 class Linter
 {
-    private $source;
-
-    public function __construct($source)
+    public function lint(string $code) : bool
     {
-        $this->source = $source;
+        $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+
+        return true;
     }
 
-    public function lint()
+    public static function isCamelCase($string)
     {
         return true;
     }

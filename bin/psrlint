@@ -3,4 +3,18 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use HexletPsrLinter\App;
+use HexletPsrLinter\Linter;
+
+list($script, $filename) = $argv;
+
+$code = file_get_contents($filename);
+$linter = new Linter();
+
+if ($linter->lint($code)) {
+    echo "Your code is valid";
+} else {
+    echo "Your code is not valid";
+}
+
+
+echo PHP_EOL;

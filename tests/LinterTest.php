@@ -2,17 +2,24 @@
 
 namespace HexletPsrLinter;
 
-use HexletPsrLinter\App;
+use HexletPsrLinter\Linter;
+use PHPUnit\Framework\TestCase;
 
 /**
  *
  */
-class LinterTest extends \PHPUnit_Framework_TestCase
+class LinterTest extends TestCase
 {
-    public function testValidate()
+    public function testLint()
     {
         $code = '<?php echo "Hello, world"';
         $linter = new Linter($code);
         $this->assertTrue($linter->lint($code));
+    }
+
+    public function testIsCamelCase()
+    {
+        $string = 'myFunctionName';
+        $this->assertTrue(Linter::isCamelCase($string));
     }
 }
