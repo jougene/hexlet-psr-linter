@@ -1,13 +1,12 @@
 #Контрольные точки
 1. Оформленный пакет по composer стандарту, с подключенными сервисами и выведенными бейджами в README.md. Бейджи: codeclimate coverage, codeclimate, travis-ci build, codeclimate issues. **DONE**
 2. Работающая проверка на правильность именования функций с вариантом вызова линтера только для одного файла.
-    - Создать тест для функции `lint`, проверяющий базовый случай
+    - Создать тест для функции `lint`, проверяющий базовый случай **DONE**
     ```php
     $code = '<?php echo "Hello, world"';
     $linter = new Linter($code);
     $this->assertTrue($linter->lint($code));
     ```
-    **DONE**
     - Создать функцию `lint` возвращающую true **DONE**
     - Тест для функции `isCamelCase` **DONE**
     - Функцию `isCamelCase` **DONE**
