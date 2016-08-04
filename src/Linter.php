@@ -12,14 +12,17 @@ use HexletPsrLinter\NodeVisitor;
  */
 class Linter
 {
-    public function lint(string $code) : bool
+    private $errors = [];
+
+    public function lint(string $code)
     {
-        array_map(function ($item) {
-            if (!$this->isCamelCase($item)) {
-                exit("There are errors in your code!" . PHP_EOL);
+        $functionsNames = $this->getFunctionsNames($code);
+        foreach ($functionsNames as $functionName) {
+            if (!$this->isCamelCase($functionName)) {
+                $this->errors[] = 'Method ' . $functionName . ' should be declared in CamelCase';
             }
-        }, $this->getFunctionsNames($code));
-        return true;
+        }
+        return $this->errors;
     }
 
     public static function isCamelCase(string $string) : bool

@@ -11,9 +11,10 @@ class LinterTest extends \PHPUnit_Framework_TestCase
 {
     public function testLint()
     {
-        $code = file_get_contents('testfile.php');
         $linter = new Linter($code);
-        $this->assertTrue($linter->lint($code));
+        $code = file_get_contents('testfile.php');
+        $errors = $linter->lint($code);
+        $this->assertEquals($errors, []);
     }
 
     public function testIsCamelCase()
