@@ -26,4 +26,3 @@ class LinterTest extends TestCase
         $this->assertTrue(Linter::isCamelCase($string1));
     }
 }
-// E:\my\hexlet-psr-linter\testfile.php

@@ -15,7 +15,7 @@ function myFunction()
     return true;
 }
 
-function correctName()
+function incorrect_name()
 {
     return false;
 }

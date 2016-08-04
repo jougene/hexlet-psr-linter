@@ -12,8 +12,8 @@ class Linter
     public function lint(string $code) : bool
     {
         array_map(function ($item) {
-            if ($this->isCamelCase($item)) {
-                return false;
+            if (!$this->isCamelCase($item)) {
+                exit("There are errors in your code!" . PHP_EOL);
             }
         }, $this->getFunctionNames($code));
         return true;
