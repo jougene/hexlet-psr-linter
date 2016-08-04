@@ -3,12 +3,11 @@
 namespace HexletPsrLinter;
 
 use HexletPsrLinter\Linter;
-use PHPUnit\Framework\TestCase;
 
 /**
  *
  */
-class LinterTest extends TestCase
+class LinterTest extends \PHPUnit_Framework_TestCase
 {
     public function testLint()
     {
@@ -23,6 +22,5 @@ class LinterTest extends TestCase
         $string1 = 'my_function_name';
         $this->assertTrue(Linter::isCamelCase($string));
         $this->assertFalse(Linter::isCamelCase($string1));
-        $this->assertTrue(Linter::isCamelCase($string1));
     }
 }

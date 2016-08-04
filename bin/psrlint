@@ -16,5 +16,4 @@ if ($linter->lint($code)) {
     echo "Your code is not valid";
 }
 
-
 echo PHP_EOL;

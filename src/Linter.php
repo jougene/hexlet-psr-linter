@@ -3,6 +3,9 @@ namespace HexletPsrLinter;
 
 use PhpParser\Error;
 use PhpParser\ParserFactory;
+use PhpParser\NodeTraverser;
+use PhpParser\PrettyPrinter;
+use HexletPsrLinter\NodeVisitor;
 
 /**
  * Test User class
@@ -15,7 +18,7 @@ class Linter
             if (!$this->isCamelCase($item)) {
                 exit("There are errors in your code!" . PHP_EOL);
             }
-        }, $this->getFunctionNames($code));
+        }, $this->getFunctionsNames($code));
         return true;
     }
 
@@ -24,21 +27,20 @@ class Linter
         return \PHP_CodeSniffer::isCamelCaps($string);
     }
 
-    public function getFunctionNames(String $code)
+    public function getFunctionsNames(String $code)
     {
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
+        $traverser = new NodeTraverser;
 
+        $nodeVisitor = new NodeVisitor;
+        $traverser->addVisitor($nodeVisitor);
         try {
-            $stmts = $parser->parse($code);
+            $nodes = $parser->parse($code);
+            $nodes = $traverser->traverse($nodes);
         } catch (Error $e) {
             echo 'Parse Error: ', $e->getMessage();
         }
 
-        $functions = array_filter($stmts, function ($item) {
-            return (get_class($item) == 'PhpParser\Node\Stmt\Function_');
-        });
-        return array_map(function ($item) {
-            return $item->name;
-        }, $functions);
+        return $nodeVisitor->getFunctionsNames();
     }
 }
