@@ -6,4 +6,4 @@
 [![Issue Count](https://codeclimate.com/github/jougene/hexlet-psr-linter/badges/issue_count.svg)](https://codeclimate.com/github/jougene/hexlet-psr-linter)
 ---
 Basic usage:
-- `psrlint file_or_directory`
+- `psrlint file_or_directory [--fix]`
