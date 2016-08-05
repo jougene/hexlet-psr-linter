@@ -18,7 +18,11 @@ class LinterTest extends \PHPUnit_Framework_TestCase
 
         $code = file_get_contents('wrongtestfile.php');
         $errors = $linter->lint($code);
-        $this->assertEquals($errors, ['Method incorrect_name should be declared in CamelCase']);
+        $this->assertEquals($errors, [
+            'Line 18: Method incorrect_name should be declared in CamelCase',
+            'Line 23: Method More_incorrect_name should be declared in CamelCase',
+            'Line 28: Method Another_One_wrongName should be declared in CamelCase'
+        ]);
     }
 
     public function testIsCamelCase()
