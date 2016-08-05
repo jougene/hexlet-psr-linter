@@ -4,16 +4,27 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use HexletPsrLinter\Linter;
+use League\CLImate\CLImate;
 
 list($script, $filename) = $argv;
 
 $code = file_get_contents($filename);
 $linter = new Linter();
+$climate = new CLImate;
 
-if ($linter->lint($code)) {
-    echo "Your code is valid";
+
+$errors = $linter->lint($code);
+
+if (empty($errors)) {
+    $climate->green()->out("Your code is valid ");
 } else {
-    echo "Your code is not valid";
+    $climate->br();
+    $climate->lightBlue()->underline()->out($filename);
+    $climate->br();
+    $climate->red()->out("There are errors in your code");
+    foreach ($errors as $error) {
+        echo $error . PHP_EOL;
+    }
 }
 
 echo PHP_EOL;

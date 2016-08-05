@@ -20,5 +20,7 @@
       "HexletPsrLinter\\": "src/"
     }
   },
-  "require": {}
+  "require": {
+    "league/climate": "^3.2"
+  }
 }

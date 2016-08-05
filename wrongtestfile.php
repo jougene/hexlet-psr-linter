@@ -19,3 +19,13 @@ function incorrect_name()
 {
     return false;
 }
+
+function More_incorrect_name()
+{
+    return false;
+}
+
+function Another_One_wrongName()
+{
+    return false;
+}
