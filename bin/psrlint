@@ -16,10 +16,13 @@ $climate = new CLImate;
 $errors = $linter->lint($code);
 
 if (empty($errors)) {
+    $climate->br();
+    $climate->underline()->out($filename);
+    $climate->br();
     $climate->green()->out("Your code is valid ");
 } else {
     $climate->br();
-    $climate->lightBlue()->underline()->out($filename);
+    $climate->underline()->out($filename);
     $climate->br();
     $climate->red()->out("There are errors in your code");
     foreach ($errors as $error) {

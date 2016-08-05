@@ -6,17 +6,20 @@ use PhpParser\NodeVisitorAbstract;
 
 class NodeVisitor extends NodeVisitorAbstract
 {
-    private $functionsNames = [];
+    private $functions = [];
 
     public function leaveNode(Node $node)
     {
         if ($node instanceof Node\Stmt\Function_ || $node instanceof Node\Stmt\ClassMethod) {
-            $this->functionsNames[] = $node->name;
+            $this->functions[] = [
+                'funcName'      => $node->name,
+                'lineNumber'    => $node->getAttribute('startLine')
+            ];
         }
     }
 
-    public function getFunctionsNames()
+    public function getFunctions()
     {
-        return $this->functionsNames;
+        return $this->functions;
     }
 }

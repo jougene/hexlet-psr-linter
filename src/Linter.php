@@ -16,10 +16,11 @@ class Linter
 
     public function lint(string $code)
     {
-        $functionsNames = $this->getFunctionsNames($code);
-        foreach ($functionsNames as $functionName) {
-            if (!$this->isCamelCase($functionName)) {
-                $this->errors[] = 'Method ' . $functionName . ' should be declared in CamelCase';
+        $functions = $this->getFunctions($code);
+
+        foreach ($functions as $function) {
+            if (!$this->isCamelCase($function['funcName'])) {
+                $this->errors[] = 'Line ' . $function['lineNumber'] . ': Method ' . $function['funcName'] . ' should be declared in CamelCase';
             }
         }
         return $this->errors;
@@ -30,7 +31,7 @@ class Linter
         return \PHP_CodeSniffer::isCamelCaps($string);
     }
 
-    public function getFunctionsNames(String $code)
+    public function getFunctions(String $code)
     {
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
         $traverser = new NodeTraverser;
@@ -44,6 +45,8 @@ class Linter
             echo 'Parse Error: ', $e->getMessage();
         }
 
-        return $nodeVisitor->getFunctionsNames();
+        // var_dump($nodes);
+
+        return $nodeVisitor->getFunctions();
     }
 }
