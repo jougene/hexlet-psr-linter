@@ -45,8 +45,6 @@ class Linter
             echo 'Parse Error: ', $e->getMessage();
         }
 
-        // var_dump($nodes);
-
         return $nodeVisitor->getFunctions();
     }
 }
