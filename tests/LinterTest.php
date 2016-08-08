@@ -3,6 +3,7 @@
 namespace HexletPsrLinter;
 
 use HexletPsrLinter\Linter;
+use function \HexletPsrLinter\Rules\isCamelCase;
 
 /**
  *
@@ -29,7 +30,7 @@ class LinterTest extends \PHPUnit_Framework_TestCase
     {
         $string = 'myFunctionName';
         $string1 = 'my_function_name';
-        $this->assertTrue(Linter::isCamelCase($string));
-        $this->assertFalse(Linter::isCamelCase($string1));
+        $this->assertTrue(isCamelCase($string));
+        $this->assertFalse(isCamelCase($string1));
     }
 }

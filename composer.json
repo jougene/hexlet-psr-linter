@@ -18,7 +18,10 @@
   "autoload": {
     "psr-4": {
       "HexletPsrLinter\\": "src/"
-    }
+    },
+    "files": [
+        "src/Rules/Naming.php"
+    ]
   },
   "require": {
     "league/climate": "^3.2"
