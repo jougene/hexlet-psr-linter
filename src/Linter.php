@@ -6,6 +6,7 @@ use PhpParser\ParserFactory;
 use PhpParser\NodeTraverser;
 use PhpParser\PrettyPrinter;
 use HexletPsrLinter\NodeVisitor;
+use HexletPsrLinter\Checkers;
 
 /**
  * Test User class
@@ -26,10 +27,10 @@ class Linter
         return $this->errors;
     }
 
-    public static function isCamelCase(string $string) : bool
-    {
-        return \PHP_CodeSniffer::isCamelCaps($string);
-    }
+    // public static function isCamelCase(string $string) : bool
+    // {
+    //     return \PHP_CodeSniffer::isCamelCaps($string);
+    // }
 
     public function getFunctions(String $code)
     {
