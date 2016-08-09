@@ -6,6 +6,8 @@ use PhpParser\ParserFactory;
 use PhpParser\NodeTraverser;
 use PhpParser\PrettyPrinter;
 use HexletPsrLinter\NodeVisitor;
+use function \HexletPsrLinter\Rules\isCamelCase;
+use function \HexletPsrLinter\Rules\isSomeRule;
 
 /**
  * Test User class
@@ -13,22 +15,18 @@ use HexletPsrLinter\NodeVisitor;
 class Linter
 {
     private $errors = [];
+    private $rules = [];
 
     public function lint(string $code)
     {
-        $functions = $this->getFunctions($code);
+        $functionsList = $this->getFunctions($code);
 
-        foreach ($functions as $function) {
-            if (!$this->isCamelCase($function['funcName'])) {
+        foreach ($functionsList as $function) {
+            if (!isCamelCase($function['funcName'])) {
                 $this->errors[] = 'Line ' . $function['lineNumber'] . ': Method ' . $function['funcName'] . ' should be declared in CamelCase';
             }
         }
         return $this->errors;
-    }
-
-    public static function isCamelCase(string $string) : bool
-    {
-        return \PHP_CodeSniffer::isCamelCaps($string);
     }
 
     public function getFunctions(String $code)
