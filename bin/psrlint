@@ -12,7 +12,6 @@ $code = file_get_contents($filename);
 $linter = new Linter();
 $climate = new CLImate;
 
-
 $errors = $linter->lint($code);
 
 if (empty($errors)) {

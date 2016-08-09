@@ -1,5 +1,5 @@
 <?php
-namespace HexletPsrLinter;
+    namespace HexletPsrLinter;
 
 use PhpParser\Error;
 use PhpParser\ParserFactory;
@@ -44,8 +44,6 @@ class Linter
         } catch (Error $e) {
             echo 'Parse Error: ', $e->getMessage();
         }
-
-        // var_dump($nodes);
 
         return $nodeVisitor->getFunctions();
     }
