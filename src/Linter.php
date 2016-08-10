@@ -1,13 +1,13 @@
 <?php
-    namespace HexletPsrLinter;
+namespace HexletPsrLinter;
 
 use PhpParser\Error;
 use PhpParser\ParserFactory;
 use PhpParser\NodeTraverser;
 use PhpParser\PrettyPrinter;
 use HexletPsrLinter\NodeVisitor;
-use function \HexletPsrLinter\Rules\isCamelCase;
-use function \HexletPsrLinter\Rules\isSomeRule;
+use function \HexletPsrLinter\Checkers\Checker\getCheckers;
+use function \HexletPsrLinter\Checkers\FunctionNaming\checkFunctionsNaming;
 
 /**
  * Test User class
@@ -15,21 +15,13 @@ use function \HexletPsrLinter\Rules\isSomeRule;
 class Linter
 {
     private $errors = [];
-    private $rules = [];
 
-    public function lint(string $code)
+    public function lint(string $code) : bool
     {
-        $functionsList = $this->getFunctions($code);
-
-        foreach ($functionsList as $function) {
-            if (!isCamelCase($function['funcName'])) {
-                $this->errors[] = 'Line ' . $function['lineNumber'] . ': Method ' . $function['funcName'] . ' should be declared in CamelCase';
-            }
-        }
-        return $this->errors;
+        return checkFunctionsNaming();
     }
 
-    public function getFunctions(String $code)
+    public static function getFunctions(String $code)
     {
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
         $traverser = new NodeTraverser;
@@ -46,3 +38,5 @@ class Linter
         return $nodeVisitor->getFunctions();
     }
 }
+
+// 'Line ' . $function['lineNumber'] . ': Method ' . $function['funcName'] . ' should be declared in CamelCase';

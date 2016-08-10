@@ -20,7 +20,9 @@
       "HexletPsrLinter\\": "src/"
     },
     "files": [
-        "src/Rules/Naming.php"
+        "src/Rules/Naming.php",
+        "src/Checkers/Checker.php",
+        "src/Checkers/FunctionNaming.php"
     ]
   },
   "require": {
